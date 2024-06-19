@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Gestão Hospitalar{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+
+        .menu .navbar-nav{
+            flex: 1;
+            justify-content: center;
+        }
+
+        .menu .navbar-nav .nav-itemS{
+            float: right;
+
+        }
+
+        .menu {
+            background-color: #1F5D5E;
+        }
+        .menu a {
+            color: #2A9D8F;
+            padding: 14px 20px;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .menu a:hover {
+            background-color: #9CE451;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+        .sidebar {
+            margin-bottom: 15px;
+        }
+        .content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .table-striped {
+            width: 100%;
+        }
+        .btn-primary, .btn-danger {
+            background-color: #04AA6D; /* Green */
+            border-radius: 30px;
+            color: white;
+            padding: 8px 18px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            argin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: #9CE451;
+            color: white;
+        }
+        .btn-danger {
+            background-color: #f70808;
+            color: white;
+        }
+        .logo span {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 14px 20px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark menu">
+    <a class="navbar-brand" href="{{ url_for('index') }}"><span>Gestão Hospitalar</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('index') }}"><i class="bi bi-house-door"></i> Painel</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('novo_medico') }}"><i class="bi bi-person-plus"></i> Cadastro de Médicos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('novo_paciente') }}"><i class="bi bi-person-plus-fill"></i> Novo Paciente</a>
+            </li>
+            <li class="nav-itemS">
+                <a class="nav-link" href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-right"></i> Sair</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 sidebar">
+            {% block sidebar %}{% endblock %}
+        </div>
+        <div class="col-md-9 content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

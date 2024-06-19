@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Consultas do Dia</h2>
+<ul class="list-group">
+    {% for consulta in consultas %}
+        <li class="list-group-item">
+            <strong>{{ consulta.paciente_nome }}</strong><br>
+            {{ consulta.data_hora }}<br>
+            {{ consulta.descricao }}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

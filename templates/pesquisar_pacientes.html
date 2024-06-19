@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Pesquisar Pacientes{% endblock %}
+{% block content %}
+<h2>Pesquisar Pacientes</h2>
+<form action="{{ url_for('pesquisar_pacientes') }}" method="POST" class="form-inline mb-4">
+    <div class="form-group mx-sm-3 mb-2">
+        <label for="termo_pesquisa" class="sr-only">Termo de Pesquisa</label>
+        <input type="text" class="form-control" id="termo_pesquisa" name="termo_pesquisa" placeholder="Pesquisar...">
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <label for="filtro" class="sr-only">Filtro</label>
+        <select class="form-control" id="filtro" name="filtro">
+            <option value="nome">Nome</option>
+            <option value="cpf">CPF</option>
+            <option value="telefone">Telefone</option>
+            <option value="email">Email</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Pesquisar</button>
+</form>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Sexo</th>
+            <th>CPF</th>
+            <th>Endereço</th>
+            <th>Telefone</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for paciente in pacientes %}
+        <tr>
+            <td>{{ paciente.nome }}</td>
+            <td>{{ paciente.idade }}</td>
+            <td>{{ paciente.sexo }}</td>
+            <td>{{ paciente.cpf }}</td>
+            <td>{{ paciente.endereco }}</td>
+            <td>{{ paciente.telefone }}</td>
+            <td>{{ paciente.email }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

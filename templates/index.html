@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Painel{% endblock %}
+
+{% block sidebar %}
+    <h4>Consultas do Dia</h4>
+    <ul class="list-group">
+        {% for consulta in consultas %}
+            <li class="list-group-item">
+                <strong>{{ consulta.paciente_nome }}</strong><br>
+                Médico: {{ consulta.medico_nome }}<br>
+                Especialidade: {{ consulta.especialidade }}<br>
+                {{ consulta.data_hora }}<br>
+                {{ consulta.descricao }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h2>Pacientes</h2>
+    <table class="table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Sexo</th>
+                <th>CPF</th>
+                <th>Endereço</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for paciente in pacientes %}
+                <tr>
+                    <td>{{ paciente.id }}</td>
+                    <td>{{ paciente.nome }}</td>
+                    <td>{{ paciente.idade }}</td>
+                    <td>{{ paciente.sexo }}</td>
+                    <td>{{ paciente.cpf }}</td>
+                    <td>{{ paciente.endereco }}</td>
+                    <td>{{ paciente.telefone }}</td>
+                    <td>{{ paciente.email }}</td>
+                    <td>
+                        <a href="{{ url_for('agendar', paciente_id=paciente.id) }}" class="btn-primary">Ag.Consulta</a>
+                        <a href="{{ url_for('excluir_paciente', paciente_id=paciente.id) }}" class="btn-danger" onclick="return confirm('Tem certeza que deseja excluir este paciente?');">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
